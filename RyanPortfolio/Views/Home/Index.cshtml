@@ -20,7 +20,7 @@
     }
     
     #portfolio {
-        padding-top:60px;
+        padding-top:30px;
         background-color:grey;
     }
 
@@ -29,9 +29,14 @@
     }
 
     #about {
-        padding-top:60px;
+        padding-top:30px !important;
         padding-bottom:30px;
     }
+
+    #contact {
+        padding-top:40px;
+    }
+
     .mobile {
         display: none;
     }
@@ -107,7 +112,7 @@
     </div>
 </header>
 <!-- About Section -->
-<section id="about" class="container content-section text-center">
+<section id="about" class="container text-center">
     <div class="row">
         <div class="col-lg-8 col-lg-offset-2">
             <h2>About Ryan</h2>
@@ -128,7 +133,7 @@
         </div>
     </div>
 </section>
-<div id="graph-container" style="height:60vh"></div>
+<div id="graph-container" name="graph-container" style="height:60vh;width:70vw;margin-left:15vw;"></div>
 <div class="modal fade" id="portfolioPopup">
     <div class="modal-dialog" role="document">
         <div class="modal-content" id="portfolioPopupData">
@@ -188,8 +193,9 @@
     prefix = 'grid_',
     inside = false,
     toolconfig,
-    tooltips;
-    
+    tooltips,
+    triggered = false;
+
     var template =  '<div class="modal-header">' +
                     '  <button type="button" class="close" data-dismiss="modal" aria-label="Close">' +
                     '    <span aria-hidden="true">&times;</span>' + 
@@ -205,6 +211,15 @@
                     '</div>';
 
     $(function () {
+        var oTop = $('#graph-container').offset().top - (window.innerHeight/4);
+        $(window).scroll(function () {
+
+            var pTop = $('body').scrollTop();
+            if (pTop > oTop && triggered == false) {
+                triggered = true;
+                switchMode($('#graph-container'));
+            }
+        });
 
         $('#hideEdges').click(function () {
             if ($(this).is(':checked')) {
@@ -313,13 +328,13 @@
                 }
             });
 
-            $('#graph-container').mouseenter(function (e) {
-                switchMode(this);
-            });
+            //$('#graph-container').mouseenter(function (e) {
+            //    switchMode(this);
+            //});
 
-            $('#graph-container').mouseleave(function (e) {
-                switchMode(this);
-            });
+            //$('#graph-container').mouseleave(function (e) {
+            //    switchMode(this);
+            //});
         });
     });
 
