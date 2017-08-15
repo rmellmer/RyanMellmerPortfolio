@@ -73,7 +73,7 @@
                     <a class="page-scroll" href="#about">About</a>
                 </li>
                 <li>
-                    <a class="page-scroll" href="#portfolio">Portfolio</a>
+                    <a class="page-scroll" href="#portfolio">Interactive Portfolio</a>
                 </li>
                 <li>
                     <a class="page-scroll" href="#download">Blog</a>
@@ -111,7 +111,7 @@
     <div class="row">
         <div class="col-lg-8 col-lg-offset-2">
             <h2>About Ryan</h2>
-            <p>I am currently a senior at Portland State University working toward a degree in Computer Science and will be graduating in March 2017. I have completed internships at both <a href="http://www.onsemi.com/PowerSolutions/home.do">ON Semiconductor</a> and <a href="http://www.intelsecurity.com/">Intel Security Group</a> at the Intel campus in Hillsboro, OR.</p>
+            <p>I graduated from Portland State University with a BS in Computer Science in March 2017. I am currently working in the Applied Intelligence group at <a href="http://www.mcafee.com/">McAfee</a>, and I have completed internships at both <a href="http://www.onsemi.com/PowerSolutions/home.do">ON Semiconductor</a> and <a href="http://www.intel.com/">Intel</a>.</p>
             <br />
             <p>Recently I have grown an interest in Big Data as well as any emerging tech within IOT (Internet of Things).</p>            
         </div>
@@ -122,14 +122,13 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2">
-                <h2>Portfolio</h2>
+                <h2>Interactive Portfolio</h2>
                 <p>Click on a node below to see more!</p>
-                <p class="mobile">Double click blank space to change view.</p>
             </div>
         </div>
     </div>
 </section>
-<div id="graph-container"></div>
+<div id="graph-container" style="height:60vh"></div>
 <div class="modal fade" id="portfolioPopup">
     <div class="modal-dialog" role="document">
         <div class="modal-content" id="portfolioPopupData">
@@ -285,7 +284,7 @@
                         autoRescale: true,
                         animationsTime: 1000,
                         minNodeSize: 1,
-                        maxNodeSize: 15,
+                        maxNodeSize: 10,
                         minEdgeSize: 0.5,
                         maxEdgeSize: 4,
                         sideMargin: 4,
@@ -314,20 +313,13 @@
                 }
             });
 
-            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-                s.bind('doubleClickStage', function (e) {
-                    switchMode(this);
-                });
-            }
-            else {
-                $('#graph-container').mouseenter(function (e) {
-                    switchMode(this);
-                });
+            $('#graph-container').mouseenter(function (e) {
+                switchMode(this);
+            });
 
-                $('#graph-container').mouseleave(function (e) {
-                    switchMode(this);
-                });
-            }
+            $('#graph-container').mouseleave(function (e) {
+                switchMode(this);
+            });
         });
     });
 
