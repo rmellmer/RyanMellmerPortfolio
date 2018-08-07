@@ -763,7 +763,6 @@
     <Content Include="scripts\linkurious.js-1.5.1\test\unit.plugins.locate.js" />
     <Content Include="scripts\linkurious.js-1.5.1\test\unit.quad.js" />
     <Content Include="scripts\linkurious.js-1.5.1\test\unit.renderers.js" />
-    <Content Include="Web.config" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
@@ -917,12 +916,6 @@
     <Content Include="scripts\jquery-3.1.0.min.map" />
     <Content Include="scripts\jquery-3.1.0.slim.min.map" />
     <Content Include="scripts\jquery.mobile-1.4.5.min.map" />
-    <None Include="Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </None>
-    <None Include="Web.Release.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
