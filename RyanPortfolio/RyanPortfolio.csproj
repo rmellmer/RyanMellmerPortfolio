@@ -392,10 +392,8 @@
     <Content Include="Content\font-awesome\scss\_variables.scss" />
     <None Include="Properties\PublishProfiles\ryanmellmer - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\ryanmellmer - Web Deploy.pubxml" />
-    <None Include="scripts\jquery-3.1.0.intellisense.js" />
     <Content Include="scripts\grayscale.js" />
     <Content Include="scripts\grayscale.min.js" />
-    <None Include="scripts\jquery-1.8.0.intellisense.js" />
     <Content Include="scripts\jquery-1.8.0.js" />
     <Content Include="scripts\jquery-1.8.0.min.js" />
     <Content Include="scripts\jquery-3.1.0.js" />
@@ -765,6 +763,14 @@
     <Content Include="scripts\linkurious.js-1.5.1\test\unit.renderers.js" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Web.config" />
+    <Content Include="skills.json" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
