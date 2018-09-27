@@ -12,9 +12,7 @@ namespace RyanPortfolio.Controllers
 {
     public class HomeController : Controller
     {
-        private static string connectionString = ConfigurationManager.ConnectionStrings["SQLDatabase"].ConnectionString;
-        private static string findSkillsString = "SELECT id, Name, Description, ParentID, Level, Project, Details, Link FROM Skills WHERE ParentID = @ParentID";
-        private static string findLevelString = "SELECT id, Name, Description, ParentID, Level FROM Skills WHERE Level = @Level";
+        private static string skillFile = AppDomain.CurrentDomain.BaseDirectory + @"\skills.json";
 
         // GET: Home
         public ActionResult Index()
@@ -24,32 +22,16 @@ namespace RyanPortfolio.Controllers
 
         public ActionResult GetSkillCategories()
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-                SqlCommand command = new SqlCommand(findSkillsString, connection);
-                command.Parameters.AddWithValue("@ParentID", 0);
-                SqlDataAdapter da = new SqlDataAdapter(command);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-                connection.Close();
-                return Json(JsonConvert.SerializeObject(dt), JsonRequestBehavior.AllowGet);
-            }
+            return Json(System.IO.File.ReadAllText(skillFile), JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult GetChildSkills(int parent)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-                SqlCommand command = new SqlCommand(findSkillsString, connection);
-                command.Parameters.AddWithValue("@ParentID", parent);
-                SqlDataAdapter da = new SqlDataAdapter(command);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-                connection.Close();
-                return Json(JsonConvert.SerializeObject(dt), JsonRequestBehavior.AllowGet);
-            }
+            IEnumerable<dynamic> jsonObject = JsonConvert.DeserializeObject<IEnumerable<dynamic>>(System.IO.File.ReadAllText(skillFile));
+
+            jsonObject = jsonObject.Where(x => x.id == parent).First().skills;
+
+            return Json(JsonConvert.SerializeObject(jsonObject), JsonRequestBehavior.AllowGet);
         }
     }
 }
