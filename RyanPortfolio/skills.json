@@ -58,7 +58,7 @@
           {
             "title": "React To-Do App Hosted on AWS",
             "description": "This was a small personal project that I worked on to learn React.JS and Node.JS. This project is cloud-native hosted on AWS S3 and API Gateway, and uses DynamoDB!",
-            "link": "<a href='http://todo.ryanmellmer.com' target='_blank'>To-Do Project</a></br><a href='https://github.com/rmellmer/ToDoReact' target='_blank'>Frontend Code</a></br><a href='https://github.com/rmellmer/ToDoAPI' target='_blank'>Backend Code</a>"
+            "link": "<a href='http://todo.ryanmellmer.com' target='_blank'>To-Do Project</a><br/><a href='https://github.com/rmellmer/ToDoReact' target='_blank'>Frontend Code</a><br/><a href='https://github.com/rmellmer/ToDoAPI' target='_blank'>Backend Code</a>"
           }
         ]
       },
@@ -161,7 +161,7 @@
           {
             "title": "React To-Do App Hosted on AWS",
             "description": "This was a small personal project that I worked on to learn React.JS and Node.JS. This project is cloud-native hosted on AWS S3 and API Gateway, and uses DynamoDB!",
-            "link": "<a href='http://todo.ryanmellmer.com' target='_blank'>To-Do Project</a></br><a href='https://github.com/rmellmer/ToDoReact' target='_blank'>Frontend Code</a></br><a href='https://github.com/rmellmer/ToDoAPI' target='_blank'>Backend Code</a>"
+            "link": "<a href='http://todo.ryanmellmer.com' target='_blank'>To-Do Project</a><br/><a href='https://github.com/rmellmer/ToDoReact' target='_blank'>Frontend Code</a><br/><a href='https://github.com/rmellmer/ToDoAPI' target='_blank'>Backend Code</a>"
           }
         ]
       }
