@@ -1,16 +1,15 @@
 ﻿[
   {
     "id": 1,
-    "name": "Scripting",
+    "name": "Coding",
     "skills": [
       {
         "id": 100,
         "name": "C#",
         "examples": [
           {
-            "title": "Living Words",
-            "description": "I created this website as a little experiment to map interesting words in the Bible and map words that occur in the same verse together. I used C# to parse out interesting words, SQL Server to store data, and Sigma.js to chart the results.",
-            "link": "<a href='http:\\livingwords.azurewebsites.net' target='_blank'>Living Words</a>"
+            "title": "McAfee",
+            "description": "McAfee is largely a .NET shop, and I've used C# .NET extensively in the workplace. This application also uses C# .NET to host the backend of the website!"
           }
         ]
       },
@@ -48,17 +47,18 @@
           {
             "title": "Shell Belle Photography",
             "description": "I developed this photography portfolio website using ASP.NET MVC and C#.",
-            "link": "<a href='http:\\shellbelle.photography' target='_blank'>Shell Belle Photography</a>"
+            "link": "<a href='http://shellbelle.photography' target='_blank'>Shell Belle Photography</a>"
           }
         ]
       },
       {
-        "id": 202,
-        "name": "JavaScript",
+        "id": 503,
+        "name": "React",
         "examples": [
           {
-            "title": "Portfolio Website",
-            "description": "This website uses JavaScript extensively!"
+            "title": "React To-Do App Hosted on AWS",
+            "description": "This was a small personal project that I worked on to learn React.JS and Node.JS. This project is cloud-native hosted on AWS S3 and API Gateway, and uses DynamoDB!",
+            "link": "<a href='http://todo.ryanmellmer.com' target='_blank'>To-Do Project</a></br><a href='https://github.com/rmellmer/ToDoReact' target='_blank'>Frontend Code</a></br><a href='https://github.com/rmellmer/ToDoAPI' target='_blank'>Backend Code</a>"
           }
         ]
       },
@@ -122,7 +122,7 @@
           {
             "title": "Living Words",
             "description": "Living words uses a SQL Server Express instance hosted in Microsoft Azure to store lexical analysis results.",
-            "link": "<a href='http:\\livingwords.azurewebsites.net' target='_blank'>Living Words</a>"
+            "link": "<a href='http://livingwords.azurewebsites.net' target='_blank'>Living Words</a>"
           }
         ]
       }
@@ -151,6 +151,17 @@
             "title": "Python Computer Vision Project",
             "description": "A small project used to analyze security camera footage and track moving objects within it throughout the frame.",
             "link": "<a href='https://github.com/rmellmer/Pedestrian-Vehicle-Tracking' target='_blank'>Python CV Project</a>"
+          }
+        ]
+      },
+      {
+        "id": 503,
+        "name": "AWS/React.JS",
+        "examples": [
+          {
+            "title": "React To-Do App Hosted on AWS",
+            "description": "This was a small personal project that I worked on to learn React.JS and Node.JS. This project is cloud-native hosted on AWS S3 and API Gateway, and uses DynamoDB!",
+            "link": "<a href='http://todo.ryanmellmer.com' target='_blank'>To-Do Project</a></br><a href='https://github.com/rmellmer/ToDoReact' target='_blank'>Frontend Code</a></br><a href='https://github.com/rmellmer/ToDoAPI' target='_blank'>Backend Code</a>"
           }
         ]
       }
