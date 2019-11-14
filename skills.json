@@ -19,7 +19,8 @@
         "examples": [
           {
             "title": "Arduino Wavetable Synthesis",
-            "description": "I recently began leading a team of software developers at Portland State University tasked with creating a C++ library which runs on a tiny DAC to produce realistic instrument sounds via a process called Wavetable Synthesis. This library will be able to take a recorded sample of an actual instrument, and perform various transformations on them to generate different high-quality samples representing different pitches. The idea is that a micro-controller (with very limited on-board memory) will be able to be used as an instrument! The idea is to allow this library to be included in an Arduino project to run not only on this particular DAC we are targeting, but to also allow it to be used in any Arduino-based micro-controller. Stay tuned for more updates as we implement this unique library!"
+            "description": "I recently began leading a team of software developers at Portland State University tasked with creating a C++ library which runs on a tiny DAC to produce realistic instrument sounds via a process called Wavetable Synthesis. This library will be able to take a recorded sample of an actual instrument, and perform various transformations on them to generate different high-quality samples representing different pitches. The idea is that a micro-controller (with very limited on-board memory) will be able to be used as an instrument! The idea is to allow this library to be included in an Arduino project to run not only on this particular DAC we are targeting, but to also allow it to be used in any Arduino-based micro-controller. Stay tuned for more updates as we implement this unique library!",
+            "link": "<a href='https://github.com/TeensyAudio/Wavetable-Synthesis' target='_blank'>Wavetable Synthesis Repo</a>"
           }
         ]
       },
@@ -28,9 +29,9 @@
         "name": "Python",
         "examples": [
           {
-            "title": "Pokemon in Portland",
-            "description": "I created this website back when Pokemon GO was just released. I was using an API to pull data about pokemon stops in the area, and I used a Python script to query a large portion of Portland and keep track of pokestops and gyms. Unfortunately, they removed the API, but my data is still stored in a personal SQL Server, so the pokestop info is still useful!",
-            "link": "<a href='http:\\pokemoninportland.azurewebsites.net' target='_blank'>Pokemon in Portland</a>"
+            "title": "Python Computer Vision Project",
+            "description": "A small project used to analyze security camera footage and track moving objects within it throughout the frame.",
+            "link": "<a href='https://github.com/rmellmer/Pedestrian-Vehicle-Tracking' target='_blank'>Python CV Project</a>"
           }
         ]
       }
@@ -52,13 +53,13 @@
         ]
       },
       {
-        "id": 503,
+        "id": 203,
         "name": "React",
         "examples": [
           {
             "title": "React To-Do App Hosted on AWS",
             "description": "This was a small personal project that I worked on to learn React.JS and Node.JS. This project is cloud-native hosted on AWS S3 and API Gateway, and uses DynamoDB!",
-            "link": "<a href='http://todo.ryanmellmer.com' target='_blank'>To-Do Project</a><br/><a href='https://github.com/rmellmer/ToDoReact' target='_blank'>Frontend Code</a><br/><a href='https://github.com/rmellmer/ToDoAPI' target='_blank'>Backend Code</a>"
+            "link": "<a href='http://www.todo.ryanmellmer.com' target='_blank'>To-Do Project</a><br/><a href='https://github.com/rmellmer/ToDoReact' target='_blank'>Frontend Code</a><br/><a href='https://github.com/rmellmer/ToDoAPI' target='_blank'>Backend Code</a>"
           }
         ]
       },
@@ -111,7 +112,7 @@
         "examples": [
           {
             "title": "McAfee",
-            "description": "I gained some experience working with MongoDB while interning at Intel. It was a great introduction into the world of noSQL databases."
+            "description": "I gained some experience working with MongoDB while interning at Intel. It was a great introduction into the world of NoSQL databases."
           }
         ]
       },
@@ -120,9 +121,8 @@
         "name": "SQL Server",
         "examples": [
           {
-            "title": "Living Words",
-            "description": "Living words uses a SQL Server Express instance hosted in Microsoft Azure to store lexical analysis results.",
-            "link": "<a href='http://livingwords.azurewebsites.net' target='_blank'>Living Words</a>"
+            "title": "McAfee",
+            "description": "I learned a lot about SQL Server at McAfee, as my team owned and managed 3+ production SQL Server instances."
           }
         ]
       }

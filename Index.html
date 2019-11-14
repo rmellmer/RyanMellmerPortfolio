@@ -1,0 +1,756 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <script src="scripts/jquery-3.1.0.js"></script>
+    <script src="scripts/bootstrap.min.js"></script>
+    <script src="scripts/jquery.waypoints.min.js"></script>
+    <link href='Content/bootstrap.min.css' rel="stylesheet">
+    <link href="Content/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <!-- Theme CSS -->
+    <link href="Content/grayscale.min.css" rel="stylesheet">
+    <script src="scripts/linkurious.js-1.5.1/src/sigma.core.js"></script>
+    <script src="scripts/linkurious.js-1.5.1/src/conrad.js"></script>
+    <script src="scripts/linkurious.js-1.5.1/src/utils/sigma.utils.js"></script>
+    <script src="scripts/linkurious.js-1.5.1/src/utils/sigma.polyfills.js"></script>
+    <script src="scripts/linkurious.js-1.5.1/src/sigma.settings.js"></script>
+    <script src="scripts/linkurious.js-1.5.1/src/classes/sigma.classes.dispatcher.js"></script>
+    <script src="scripts/linkurious.js-1.5.1/src/classes/sigma.classes.configurable.js"></script>
+    <script src="scripts/linkurious.js-1.5.1/src/classes/sigma.classes.graph.js"></script>
+    <script src="scripts/linkurious.js-1.5.1/src/classes/sigma.classes.camera.js"></script>
+    <script src="scripts/linkurious.js-1.5.1/src/classes/sigma.classes.quad.js"></script>
+    <script src="scripts/linkurious.js-1.5.1/src/captors/sigma.captors.mouse.js"></script>
+    <script src="scripts/linkurious.js-1.5.1/src/captors/sigma.captors.touch.js"></script>
+    <script src="scripts/linkurious.js-1.5.1/src/renderers/sigma.renderers.canvas.js"></script>
+    <script src="scripts/linkurious.js-1.5.1/src/renderers/canvas/sigma.canvas.labels.def.js"></script>
+    <script src="scripts/linkurious.js-1.5.1/src/renderers/canvas/sigma.canvas.hovers.def.js"></script>
+    <script src="scripts/linkurious.js-1.5.1/src/renderers/canvas/sigma.canvas.nodes.def.js"></script>
+    <script src="scripts/linkurious.js-1.5.1/src/renderers/canvas/sigma.canvas.edges.def.js"></script>
+    <script src="scripts/linkurious.js-1.5.1/src/renderers/canvas/sigma.canvas.edges.curve.js"></script>
+    <script src="scripts/linkurious.js-1.5.1/src/renderers/canvas/sigma.canvas.edges.arrow.js"></script>
+    <script src="scripts/linkurious.js-1.5.1/src/renderers/canvas/sigma.canvas.edges.curvedArrow.js"></script>
+    <script src="scripts/linkurious.js-1.5.1/src/renderers/canvas/sigma.canvas.edgehovers.def.js"></script>
+    <script src="scripts/linkurious.js-1.5.1/src/renderers/canvas/sigma.canvas.edgehovers.curve.js"></script>
+    <script src="scripts/linkurious.js-1.5.1/src/renderers/canvas/sigma.canvas.edgehovers.arrow.js"></script>
+    <script src="scripts/linkurious.js-1.5.1/src/renderers/canvas/sigma.canvas.edgehovers.curvedArrow.js"></script>
+    <script src="scripts/linkurious.js-1.5.1/src/renderers/canvas/sigma.canvas.extremities.def.js"></script>
+    <script src="scripts/linkurious.js-1.5.1/src/middlewares/sigma.middlewares.rescale.js"></script>
+    <script src="scripts/linkurious.js-1.5.1/src/middlewares/sigma.middlewares.copy.js"></script>
+    <script src="scripts/linkurious.js-1.5.1/src/misc/sigma.misc.animation.js"></script>
+    <script src="scripts/linkurious.js-1.5.1/src/misc/sigma.misc.bindEvents.js"></script>
+    <script src="scripts/linkurious.js-1.5.1/src/misc/sigma.misc.bindDOMEvents.js"></script>
+    <script src="scripts/linkurious.js-1.5.1/src/misc/sigma.misc.drawHovers.js"></script>
+    <!-- END SIGMA IMPORTS -->
+    <script src="scripts/linkurious.js-1.5.1/plugins/sigma.plugins.animate/sigma.plugins.animate.js"></script>
+    <script src="scripts/linkurious.js-1.5.1/plugins/sigma.layouts.noverlap/sigma.layouts.noverlap.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/0.8.1/mustache.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+
+    <title>Ryan Mellmer Software</title>
+</head>
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+    <style>
+        #graph-container {
+            top: 0px;
+            left: 0px;
+            position: relative;
+            width: 100%;
+            height: 90%;
+            z-index: -1;
+        }
+
+        #controls {
+            z-index: 0;
+            position: absolute;
+        }
+        
+        #resume {
+            padding-top:30px;
+            background-color:grey;
+        }
+
+        #download {
+            padding-top:10px;
+        }
+
+        #about {
+            padding-top:30px !important;
+            padding-bottom:30px;
+        }
+
+        #contact {
+            padding-top:40px;
+        }
+
+        .mobile {
+            display: none;
+        }
+        @@media (max-width:1000px) {
+            .mobile {
+                display: block;
+            }
+            .desktop {
+                display: none;
+            }
+        }   
+
+        .modal-header, .modal-body th, .modal-body td {
+            color:black;
+        }
+    </style>
+
+    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+                    Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand page-scroll desktop" href="#page-top">
+                    <i class="fa fa-code"></i> <span class="light">Ryan Mellmer</span> Software
+                </a>
+                <a class="navbar-brand page-scroll mobile" href="#page-top">
+                    <i class="fa fa-code"></i> <span class="light">RM</span> Software
+                </a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+                <ul class="nav navbar-nav">
+                    <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#about">About</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#resume">Resume</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#download">Blog</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Intro Header -->
+    <header class="intro">
+        <div class="intro-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1">
+                        <h1 class="brand-heading">Ryan Mellmer Software</h1>
+                        <p class="intro-text">
+                            Full-stack designer/developer producing unique software solutions.
+                        </p>
+                        <a href="#about" class="btn btn-circle page-scroll">
+                            <i class="fa fa-angle-double-down animated"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- About Section -->
+    <section id="about" class="container text-center">
+        <div class="row">
+            <div class="col-lg-4 col-lg-offset-4">
+                <img class="img-circle" src="img/me.jpg" width="300"/>
+            </div>
+        </div>
+        <br/>
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+                <h2>About Ryan</h2>
+                <p>I graduated from Portland State University with a BS in Computer Science in March 2017. I have @(DateTime.Today.Year - 2015)+ years of industry experience, and I am currently working in the Applied Intelligence group at <a href="http://www.mcafee.com/">McAfee</a>, and I have completed internships at both <a href="http://www.onsemi.com/PowerSolutions/home.do">ON Semiconductor</a> and <a href="http://www.intel.com/">Intel</a>.</p>
+                <br />
+                <p>Recently I have grown an interest in Big Data as well as any emerging tech within IOT (Internet of Things).</p>            
+            </div>
+        </div>
+    </section>
+    <section id="resume" class="content-section text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <h2>Resume</h2>
+                    <p>Grab a copy of <a href="https://drive.google.com/uc?export=download&id=0B8ri0HEthLncVnhiU1puZmEwcFk">my current resume</a> or click on a node below to see more!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div id="graph-container" name="graph-container" style="height:60vh;width:98vw;margin-left:0vw;"></div>
+    <div class="modal fade" id="portfolioPopup">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content" id="portfolioPopupData">
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    <!-- Download Section -->
+    <section id="download" class="content-section text-center">
+        <div class="download-section">
+            <div class="container">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <h2>Ryan's Wordpress Blog</h2>
+                    <p>I do my best to keep my blog up-to-date with my current software endevours and projects!</p>
+                    <a href="http://ryanmellmer.wordpress.com/" class="btn btn-default btn-lg">Visit Wordpress Blog</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Contact Section -->
+    <section id="contact" class="container content-section text-center">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+                <h2>Contact Me</h2>
+                <p>Feel free to email me with software development questions or to just say hello!</p>
+                <p>
+                    <a href="mailto:ryanmellmer@gmail.com">ryanmellmer@gmail.com</a>
+                </p>
+                <ul class="list-inline banner-social-buttons">
+                    <li>
+                        <a href="https://twitter.com/ryanmellmer" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Twitter</span></a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/rmellmer" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">GitHub</span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer>
+        <div class="container text-center">
+            <p>Copyright &copy; Ryan Mellmer @DateTime.Today.Year</p>
+        </div>
+    </footer>
+</body>
+</html>
+
+<script>
+    var i,
+    s,
+    o,
+    L = 10,
+    N = 5,
+    E = 0,
+    g = {
+        nodes: [],
+        edges: []
+    },
+    step = 0,
+    GRID_X = 0,
+    GRID_Y = 0,
+    prefix = 'grid_',
+    inside = false,
+    toolconfig,
+    tooltips,
+    triggered = false;
+
+    var template =  '<div class="modal-header">' +
+                    '  <button type="button" class="close" data-dismiss="modal" aria-label="Close">' +
+                    '    <span aria-hidden="true">&times;</span>' + 
+                    '  </button>' +
+                    '  <h4 class="modal-title">{{{label}}}</h4>' +
+                    '</div>' +
+                    '<div class="modal-body">' +
+                    '    <table>' +
+                    '      <tr><th>{{{project}}}</th></tr>' +
+                    '      <tr><td>{{{details}}}</td></tr>' +
+                    '      <tr><td><div>{{{link}}}</div></td></tr>' +
+                    '    </table>' +
+                    '</div>';
+
+    $(function () {
+        var oTop = $('#graph-container').offset().top - (window.innerHeight/4);
+        $(window).scroll(function () {
+
+            var pTop = $('body').scrollTop();
+            if (pTop > oTop && triggered == false) {
+                triggered = true;
+                switchMode($('#graph-container'));
+            }
+        });
+
+        $('#hideEdges').click(function () {
+            if ($(this).is(':checked')) {
+                s.graph.edges().forEach(function (e) {
+                    e.hidden = false;
+                });
+            }
+            else {
+                s.graph.edges().forEach(function (e) {
+                    e.hidden = true;
+                });
+            }
+        });
+
+        var data = JSON.parse(document.getElementById('skills').innerHTML);
+
+        $.each(data, function (i, item) {
+            o = {
+                id: item.id,
+                label: item.name,
+                depth: 0,
+                parent: true,
+                circular_x: L * Math.cos(Math.PI * 2 * i / N - Math.PI / 2),
+                circular_y: L * Math.sin(Math.PI * 2 * i / N - Math.PI / 2),
+                circular_size: 3,
+                circular_color: '#' + (
+                    Math.floor(Math.random() * 16777215).toString(16) + '000000'
+                ).substr(0, 6),
+                grid_x: Math.floor(i / L),
+                grid_y: (i % L) * 4,
+                grid_size: 3,
+                grid_color: '#ccc'
+            };
+            ['x', 'y', 'size', 'color'].forEach(function (val) {
+                o[val] = o['grid_' + val];
+            });
+            g.nodes.push(o);
+        });
+
+        s = new sigma({
+            graph: g,
+            renderer: {
+                container: document.getElementById('graph-container'),
+                type: 'canvas'
+            },
+            settings: {
+                labelThreshold: 0,
+                doubleClickEnabled: false,
+                autoRescale: true,
+                animationsTime: 1000,
+                minNodeSize: 1,
+                maxNodeSize: 10,
+                minEdgeSize: 0.5,
+                maxEdgeSize: 4,
+                sideMargin: 4,
+                enableEdgeHovering: false,
+                edgeHoverColor: 'edge',
+                defaultEdgeHoverColor: '#000',
+                edgeHoverSizeRatio: 2,
+                edgeHoverExtremities: true,
+                autoCurveRatio: 2,
+                defaultLabelColor: '#fff'
+            }
+        });
+
+        s.settings('zoomingRatio', 1);
+        s.refresh();
+
+        s.bind('clickNode rightClickNode', function (e) {
+            if (e.data.node.parent) {
+                GetChildWords(e.data.node.id);
+            }
+            else {
+                var node = e.data.node;
+                $('#portfolioPopupData').html(Mustache.render(template, node));
+                $('#portfolioPopup').modal('show');
+            }
+        });
+
+        $('#graph-container').waypoint(function (direction) {
+            switchMode(this);
+        }, {
+            offset: 70
+        });
+    });
+
+    function switchMode(e) {
+        if (prefix == 'grid_') {
+            prefix = 'circular_';
+            if ($('#hideEdges').is(':checked')) {
+                s.graph.edges().forEach(function (e) {
+                    e.hidden = true;
+                });
+            }
+            else {
+                s.graph.edges().forEach(function (e) {
+                    e.hidden = false;
+                });
+            }
+            sigma.plugins.animate(
+                s,
+                {
+                    x: prefix + 'x',
+                    y: prefix + 'y',
+                    size: prefix + 'size',
+                    color: prefix + 'color'
+                },
+                {
+                    onComplete: function () {
+                        s.refresh();
+                        var config = {
+                            nodeMargin: 40.0,
+                            scaleNodes: 1,
+                            easing: 'quadraticInOut'
+                        };
+                        var listener = s.configNoverlap(config);
+                        listener.bind('interpolate', function (event) {
+                            sigma.misc.animation.camera(
+                              s.camera,
+                              {
+                                  x: 80,
+                                  y: 0,
+                                  ratio: 1.6
+                              },
+                              { duration: s.settings('animationsTime') }
+                            );
+                        });
+                        s.startNoverlap();
+                    }
+                }
+            );
+        }
+        else {
+            prefix = 'grid_';
+            s.graph.edges().forEach(function (e) {
+                e.hidden = true;
+            });
+            sigma.misc.animation.camera(
+              s.camera,
+              {
+                  x: 80,
+                  y: 0,
+                  ratio: 1
+              },
+              { duration: s.settings('animationsTime') }
+            );
+            sigma.plugins.animate(
+                s,
+                {
+                    x: prefix + 'x',
+                    y: prefix + 'y',
+                    size: prefix + 'size',
+                    color: prefix + 'color'
+                },
+                {
+                    onComplete: function () {
+                        s.refresh();
+                    }
+                }
+            );
+        }
+    }
+
+    function GetChildWords(parentID) {
+        var data = JSON.parse(document.getElementById('skills').innerHTML);
+
+        $.each(data, function (i, category) {
+            if (category.id == parentID) {
+                var parentNode = s.graph.nodes(parentID);
+                var parentDepth = parentNode.depth;
+                var parentX = parentNode.x;
+                var parentY = parentNode.y;
+                var parentGridX = parentNode.grid_x;
+                var parentGridY = parentNode.grid_y;
+                var parentColor = parentNode.color;
+                var newNodes = [];
+                $.each(category.skills, function (i, item) {
+                    if (s.graph.nodes(item.id) == null) {
+                        var pt_angle = Math.random() * 2 * Math.PI;
+                        var pt_radius_sq = Math.random() * 2 * L;
+                        var pt_x = Math.sqrt(pt_radius_sq) * Math.cos(pt_angle);
+                        var pt_y = Math.sqrt(pt_radius_sq) * Math.sin(pt_angle);
+                        newNodes.push(item.id);
+                        childDepth = parentDepth + 1;
+                        childL = L - childDepth;
+                        if (childL < 1) childL = 1;
+                        o = {
+                            id: item.id,
+                            label: item.name,
+                            depth: childDepth,
+                            project: item.examples[0].title,
+                            details: item.examples[0].description,
+                            link: item.examples[0].link,
+                            circular_x: parentNode.circular_x,
+                            circular_y: parentNode.circular_y,
+                            circular_size: 2,
+                            circular_color: '#' + (
+                                Math.floor(Math.random() * 16777215).toString(16) + '000000'
+                            ).substr(0, 6),
+                            grid_x: parentGridX + 1,
+                            grid_y: parentGridY + (i + 1),
+                            grid_size: 2,
+                            grid_color: '#ccc'
+                        };
+                        o['x'] = parentX;
+                        o['y'] = parentY;
+                        o['color'] = o[prefix +'color'];
+                        o['size'] = o[prefix + 'size'];
+                        s.graph.addNode(o);
+                        N = N + 1;
+                        s.refresh();
+                    }
+                    if (s.graph.edges('e' + parentID + '_' + item.id) == null && s.graph.edges('e' + item.id + '_' + parentID) == null) {
+                        s.graph.addEdge({
+                            id: 'e' + parentID + '_' + item.id,
+                            source: parentID,
+                            target: item.id,
+                            type: 'line',
+                            size: 1,
+                            color: parentColor
+                        });
+                    }
+                    if (prefix == 'grid_') {
+                        s.graph.edges().forEach(function (e) {
+                            e.hidden = true;
+                        });
+                    }
+                });
+                HoverNodes(parentID);
+                sigma.plugins.animate(
+                    s,
+                    {
+                        x: prefix + 'x',
+                        y: prefix + 'y',
+                        size: prefix + 'size',
+                        color: prefix + 'color'
+                    },
+                    {
+                        onComplete: function () {
+                            if (prefix == 'circular_') {
+                                var config = {
+                                    nodeMargin: 40.0,
+                                    scaleNodes: 1,
+                                    easing: 'quadraticInOut'
+                                };
+                                var listener = s.configNoverlap(config);
+                                listener.bind('interpolate', function (event) {
+                                    sigma.misc.animation.camera(
+                                        s.camera,
+                                        {
+                                            x: 80,
+                                            y: 0,
+                                            ratio: 1.6
+                                        },
+                                        { duration: s.settings('animationsTime') }
+                                    );
+                                });
+                                s.startNoverlap();
+                            }
+                            s.refresh();
+                        }
+                    }
+                );
+
+                s.refresh();
+            }
+        });             
+    }
+
+    function HoverNodes(parentID) {
+        var hover = [];
+        $.each(s.graph.edges(), function (i, item) {
+            if (item.source == parentID) {
+                hover.push(item.target);
+            }
+        });
+        hover.push(parentID);
+        $.each(hover, function (i, item) {
+            s.renderers[0].dispatchEvent('overNode', { node: item });
+        });
+    }
+
+    function HideOtherNodes(id) {
+        s.graph.edges().forEach(function (e) {
+            if (e.target != id && e.source != id) {
+                e.hidden = true;
+            }
+        });
+    }
+
+    function ShowAllNodes() {
+        s.graph.nodes().forEach(function (e) {
+            e.hidden = false;
+        });
+        s.graph.edges().forEach(function (e) {
+            e.hidden = false;
+        });
+    }
+</script>
+<script type="applicaation/json" id="skills">
+    [
+    {
+      "id": 1,
+      "name": "Coding",
+      "skills": [
+        {
+          "id": 100,
+          "name": "C#",
+          "examples": [
+            {
+              "title": "McAfee",
+              "description": "McAfee is largely a .NET shop, and I've used C# .NET extensively in the workplace. This application also uses C# .NET to host the backend of the website!"
+            }
+          ]
+        },
+        {
+          "id": 101,
+          "name": "C++",
+          "examples": [
+            {
+              "title": "Arduino Wavetable Synthesis",
+              "description": "I recently began leading a team of software developers at Portland State University tasked with creating a C++ library which runs on a tiny DAC to produce realistic instrument sounds via a process called Wavetable Synthesis. This library will be able to take a recorded sample of an actual instrument, and perform various transformations on them to generate different high-quality samples representing different pitches. The idea is that a micro-controller (with very limited on-board memory) will be able to be used as an instrument! The idea is to allow this library to be included in an Arduino project to run not only on this particular DAC we are targeting, but to also allow it to be used in any Arduino-based micro-controller. Stay tuned for more updates as we implement this unique library!",
+              "link": "<a href='https://github.com/TeensyAudio/Wavetable-Synthesis' target='_blank'>Wavetable Synthesis Repo</a>"
+            }
+          ]
+        },
+        {
+          "id": 102,
+          "name": "Python",
+          "examples": [
+            {
+              "title": "Python Computer Vision Project",
+              "description": "A small project used to analyze security camera footage and track moving objects within it throughout the frame.",
+              "link": "<a href='https://github.com/rmellmer/Pedestrian-Vehicle-Tracking' target='_blank'>Python CV Project</a>"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Web Development",
+      "skills": [
+        {
+          "id": 201,
+          "name": "ASP.NET MVC",
+          "examples": [
+            {
+              "title": "Shell Belle Photography",
+              "description": "I developed this photography portfolio website using ASP.NET MVC and C#.",
+              "link": "<a href='http://shellbelle.photography' target='_blank'>Shell Belle Photography</a>"
+            }
+          ]
+        },
+        {
+          "id": 203,
+          "name": "React",
+          "examples": [
+            {
+              "title": "React To-Do App Hosted on AWS",
+              "description": "This was a small personal project that I worked on to learn React.JS and Node.JS. This project is cloud-native hosted on AWS S3 and API Gateway, and uses DynamoDB!",
+              "link": "<a href='http://www.todo.ryanmellmer.com' target='_blank'>To-Do Project</a><br/><a href='https://github.com/rmellmer/ToDoReact' target='_blank'>Frontend Code</a><br/><a href='https://github.com/rmellmer/ToDoAPI' target='_blank'>Backend Code</a>"
+            }
+          ]
+        },
+        {
+          "id": 203,
+          "name": "PHP",
+          "examples": [
+            {
+              "title": "Various Contract Work",
+              "description": "I've done various contracting work developing websites and APIs backed by PHP."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Mobile",
+      "skills": [
+        {
+          "id": 301,
+          "name": "Android Development",
+          "examples": [
+            {
+              "title": "Fatty Droid Game",
+              "description": "I have written a few random Android apps. However, only one has made it to the Google Play store - Fatty Droid. This was an experiment of sorts for me, and I wanted to see if I could create an Android game by creating my own collision and physics engine from scratch. Although the graphics aren't very good, and the gameply is a bit lacking, I feel I met my personal goals for the game.",
+              "link": "<a href='https://play.google.com/store/apps/details?id=com.mellmer.ryan.android' target='_blank'>Fatty Droid</a>"
+            }
+          ]
+        },
+        {
+          "id": 302,
+          "name": "Mobile-Friendly Websites",
+          "examples": [
+            {
+              "title": "Portfolio Website",
+              "description": "This website is mobile friendly! Go ahead, open it on your phone if you don't believe me (if you aren't on your phone already)!"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Databases",
+      "skills": [
+        {
+          "id": 401,
+          "name": "NoSQL",
+          "examples": [
+            {
+              "title": "McAfee",
+              "description": "I gained some experience working with MongoDB while interning at Intel. It was a great introduction into the world of NoSQL databases."
+            }
+          ]
+        },
+        {
+          "id": 402,
+          "name": "SQL Server",
+          "examples": [
+            {
+              "title": "McAfee",
+              "description": "I learned a lot about SQL Server at McAfee, as my team owned and managed 3+ production SQL Server instances."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "GitHub Projects",
+      "skills": [
+        {
+          "id": 501,
+          "name": "Chrome Extension",
+          "examples": [
+            {
+              "title": "PSU Schedule Import",
+              "description": "Chrome Extension for exporting online Portland State University class schedule as an ical file",
+              "link": "<a href='https://github.com/rmellmer/PSUScheduleImport' target='_blank'>PSU Schedule Chrome Extension</a>"
+            }
+          ]
+        },
+        {
+          "id": 502,
+          "name": "Computer Vision",
+          "examples": [
+            {
+              "title": "Python Computer Vision Project",
+              "description": "A small project used to analyze security camera footage and track moving objects within it throughout the frame.",
+              "link": "<a href='https://github.com/rmellmer/Pedestrian-Vehicle-Tracking' target='_blank'>Python CV Project</a>"
+            }
+          ]
+        },
+        {
+          "id": 503,
+          "name": "AWS/React.JS",
+          "examples": [
+            {
+              "title": "React To-Do App Hosted on AWS",
+              "description": "This was a small personal project that I worked on to learn React.JS and Node.JS. This project is cloud-native hosted on AWS S3 and API Gateway, and uses DynamoDB!",
+              "link": "<a href='http://todo.ryanmellmer.com' target='_blank'>To-Do Project</a><br/><a href='https://github.com/rmellmer/ToDoReact' target='_blank'>Frontend Code</a><br/><a href='https://github.com/rmellmer/ToDoAPI' target='_blank'>Backend Code</a>"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+</script>
+<script src="scripts/grayscale.js"></script>
