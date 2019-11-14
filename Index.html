@@ -1,5 +1,4 @@
-﻿<!DOCTYPE html>
-<html>
+﻿<html>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -92,7 +91,7 @@
         .mobile {
             display: none;
         }
-        @@media (max-width:1000px) {
+        @media (max-width:1000px) {
             .mobile {
                 display: block;
             }
@@ -174,7 +173,7 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2">
                 <h2>About Ryan</h2>
-                <p>I graduated from Portland State University with a BS in Computer Science in March 2017. I have @(DateTime.Today.Year - 2015)+ years of industry experience, and I am currently working in the Applied Intelligence group at <a href="http://www.mcafee.com/">McAfee</a>, and I have completed internships at both <a href="http://www.onsemi.com/PowerSolutions/home.do">ON Semiconductor</a> and <a href="http://www.intel.com/">Intel</a>.</p>
+                <p>I graduated from Portland State University with a BS in Computer Science in March 2017. I have <span id="experience-years">4</span>+ years of industry experience, and I am currently working in the Applied Intelligence group at <a href="http://www.mcafee.com/">McAfee</a>, and I have completed internships at both <a href="http://www.onsemi.com/PowerSolutions/home.do">ON Semiconductor</a> and <a href="http://www.intel.com/">Intel</a>.</p>
                 <br />
                 <p>Recently I have grown an interest in Big Data as well as any emerging tech within IOT (Internet of Things).</p>            
             </div>
@@ -232,7 +231,7 @@
     <!-- Footer -->
     <footer>
         <div class="container text-center">
-            <p>Copyright &copy; Ryan Mellmer @DateTime.Today.Year</p>
+            <p>Copyright &copy; Ryan Mellmer <span id="current-year">2019</span></p>
         </div>
     </footer>
 </body>
@@ -273,6 +272,10 @@
                     '</div>';
 
     $(function () {
+        // Populate years in text
+        document.getElementById("experience-years").innerHTML = new Date().getFullYear() - 2015;
+        document.getElementById("current-year").innerHTML = new Date().getFullYear();
+
         var oTop = $('#graph-container').offset().top - (window.innerHeight/4);
         $(window).scroll(function () {
 
