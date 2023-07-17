@@ -1,3 +1,2 @@
 # Redirects from what the browser requests to what we serve
-/ryans-resume /ryan-mellmer-resume.pdf
-/resume /ryan-mellmer-resume.pdf
+/resume /ryan-mellmer-resume.pdf 200!
