@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Ryan Mellmer Software</title>
+    <meta http-equiv="Content-Type" content="text/html"; charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Ryan Mellmer Software Portfolio">
+    <meta name="author" content="Ryan Mellmer">
+
+    <script src="scripts/jquery-3.1.0.js"></script>
+    <script src="scripts/bootstrap.min.js"></script>
+    <script src="scripts/jquery.waypoints.min.js"></script>
+    <link href='Content/bootstrap.min.css' rel="stylesheet">
+    <link href="Content/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css" media="print" onload="this.media='all'">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" media="print" onload="this.media='all'">
+    <!-- Theme CSS -->
+    <link href="Content/grayscale.min.css" rel="stylesheet" type="text/css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/0.8.1/mustache.min.js" async></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js" async></script>
+</head>
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+    <div id="loadOverlay" style="background-color:#333; position:absolute; top:0px; left:0px; width:100%; height:100%; z-index:2000;"></div>
+    <style>
+        #graph-container {
+            top: 0px;
+            left: 0px;
+            position: relative;
+            width: 100%;
+            height: 90%;
+            z-index: -1;
+        }
+
+        #controls {
+            z-index: 0;
+            position: absolute;
+        }
+        
+        #resume {
+            padding: 50px 0;
+            background-color:grey;
+        }
+
+        #download {
+            padding-top:10px;
+        }
+
+        #about {
+            padding-top:30px !important;
+            padding-bottom:30px;
+        }
+
+        #contact {
+            padding-top:40px;
+        }
+
+        .mobile {
+            display: none;
+        }
+        @media (max-width:1000px) {
+            .mobile {
+                display: block;
+            }
+            .desktop {
+                display: none;
+            }
+        }   
+
+        .modal-header, .modal-body th, .modal-body td {
+            color:black;
+        }
+    </style>
+
+    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+                    Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand page-scroll desktop" href="/#page-top">
+                    <i class="fa fa-code"></i> <span class="light">Ryan Mellmer</span> Software
+                </a>
+                <a class="navbar-brand page-scroll mobile" href="/#page-top">
+                    <i class="fa fa-code"></i> <span class="light">RM</span> Software
+                </a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+                <ul class="nav navbar-nav">
+                    <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                    <li class="hidden">
+                        <a href="/#page-top"></a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/#about">About</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/resume">Resume</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/#download">Blog</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <section id="resume" class="container-full text-center" style="margin-top: 80px !important;">
+        <h1>Resume</h1>
+        <h3>
+            <a href="/ryan-mellmer-resume.pdf">Download as PDF</a> | <a href="/ryan-mellmer-resume.docx">Download as Microsoft Word (.docx)</a>
+        </h3>
+        <object data="/ryan-mellmer-resume.pdf" type="application/pdf" width="90%" height="1000px">
+            <p>Unable to display PDF file. <a href="/ryan-mellmer-resume.pdf">Download</a> instead.</p>
+        </object>
+    </section>
+    <!-- Footer -->
+    <footer>
+        <div class="container text-center">
+            <p>Copyright &copy; Ryan Mellmer <span id="yearSpan"></span></p>
+        </div>
+    </footer>
+</body>
+</html>
+
+<script type="text/javascript">    
+    var today = new Date();
+    document.getElementById("yearSpan").innerHTML = today.getFullYear();
+</script>
+
+<script src="scripts/grayscale.js"></script>
