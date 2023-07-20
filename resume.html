@@ -33,6 +33,18 @@
             padding-top:10px;
         }
 
+        .mobile {
+            display: none;
+        }
+        @media (max-width:1000px) {
+            .mobile {
+                display: block;
+            }
+            .desktop {
+                display: none;
+            }
+        }   
+
         .pdf {
             max-width: 1000px;
             margin: 0 auto;
@@ -91,7 +103,7 @@
             <script>
             document.getElementById("resume-pdf").contentWindow.onload = function() {
                 this.document.getElementsByTagName("img")[0].style.width="100%";
-                this.document.getElementsByTagName("img")[0].style.height="600px";
+                this.document.getElementsByTagName("img")[0].style.height="100%";
             };
             </script>
         </div>
