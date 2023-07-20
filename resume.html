@@ -114,10 +114,14 @@
     <section id="resume" class="container-full text-center" style="margin-top: 80px !important;">
         <h1>Resume</h1>
         <h3>
-            <a href="/ryan-mellmer-resume.pdf" download>Download as PDF</a> | <a href="/ryan-mellmer-resume.docx" download>Download as Microsoft Word (.docx)</a>
+            <a href="/ryan-mellmer-resume.pdf" download>Download as PDF</a>
+            <hr style="width: 90%;" />
+            <a href="/ryan-mellmer-resume.docx" download>Download as Microsoft Word (.docx)</a>
         </h3>
-        <object data="/ryan-mellmer-resume.pdf" type="application/pdf" width="90%" height="1000px">
-            <p>Unable to display PDF file. <a href="/ryan-mellmer-resume.pdf">Download</a> instead.</p>
+        <object data="ryan-mellmer-resume.pdf" type="application/pdf" width="90%" height="1000px">
+            <embed src="ryan-mellmer-resume.pdf" type="application/pdf" width="90%" height="1000px">
+                <p>Unable to display PDF file. <a href="ryan-mellmer-resume.pdf">Download</a> instead.</p>
+            </embed>
         </object>
     </section>
     <!-- Footer -->
@@ -129,9 +133,9 @@
 </body>
 </html>
 
+<script src="scripts/grayscale.js"></script>
+
 <script type="text/javascript">    
     var today = new Date();
     document.getElementById("yearSpan").innerHTML = today.getFullYear();
 </script>
-
-<script src="scripts/grayscale.js"></script>
